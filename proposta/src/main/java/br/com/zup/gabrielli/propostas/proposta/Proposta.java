@@ -54,7 +54,10 @@ public class Proposta {
 		return id;
 	}
 
-	
+
+	public String getCpfCnpj() {
+		return cpfCnpj;
+	}
 	
 
 	

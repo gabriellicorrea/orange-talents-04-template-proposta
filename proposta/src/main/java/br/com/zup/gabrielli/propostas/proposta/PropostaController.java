@@ -1,6 +1,7 @@
 package br.com.zup.gabrielli.propostas.proposta;
 
 import java.net.URI;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -23,6 +24,12 @@ public class PropostaController {
 	@PostMapping
 	public ResponseEntity<?> salvarProposta(@RequestBody @Valid NovaPropostaRequest request, UriComponentsBuilder uriBuilder) {
 		Proposta proposta = request.converter();
+		
+		Optional<Proposta> cpfCnpjList = propostaRepository.findByCpfCnpj(proposta.getCpfCnpj());
+		
+		if(cpfCnpjList.isPresent()) {
+			return ResponseEntity.unprocessableEntity().body("Proposta invalida! Já existe esse numero de documento cadastrado.");
+		}
 		
 		propostaRepository.save(proposta);
 		
