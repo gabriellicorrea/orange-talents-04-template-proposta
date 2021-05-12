@@ -1,4 +1,4 @@
-package br.com.zup.edu.gabrielli.proposta;
+package br.com.zup.gabrielli.proposta;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
