@@ -10,12 +10,12 @@ import javax.validation.constraints.Positive;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
-import br.com.zup.gabrielli.propostas.validacao.CpfCnpj;
+import br.com.zup.gabrielli.propostas.validacao.Documento;
 
 public class NovaPropostaRequest {
 	
-	@NotNull @NotEmpty @CpfCnpj
-	private String cpfCnpj;
+	@NotNull @NotEmpty @Documento
+	private String documento;
 	@NotNull @NotEmpty @Email
 	private String email;
 	@NotNull @NotEmpty
@@ -25,10 +25,10 @@ public class NovaPropostaRequest {
 	@NotNull @Positive
 	private BigDecimal salario;
 	
-	public NovaPropostaRequest(@NotNull @NotEmpty @CPF @CNPJ String cpfCnpj, @NotNull @NotEmpty @Email String email,
+	public NovaPropostaRequest(@NotNull @NotEmpty @CPF @CNPJ String documento, @NotNull @NotEmpty @Email String email,
 			@NotNull @NotEmpty String nome, @NotNull @NotEmpty String endereco, @NotNull BigDecimal salario) {
 		
-		this.cpfCnpj = cpfCnpj;
+		this.documento = documento;
 		this.email = email;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -36,7 +36,7 @@ public class NovaPropostaRequest {
 	}
 
 	public Proposta converter() {
-		return new Proposta(cpfCnpj, email, nome, endereco, salario);
+		return new Proposta(documento, email, nome, endereco, salario);
 	}
 
 }

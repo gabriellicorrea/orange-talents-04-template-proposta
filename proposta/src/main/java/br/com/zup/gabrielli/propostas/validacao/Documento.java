@@ -18,11 +18,12 @@ import org.hibernate.validator.constraints.br.CPF;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@CPF 
 @ConstraintComposition(CompositionType.OR)
+@CNPJ
 @ReportAsSingleViolation
 @Constraint(validatedBy = { })
-@CPF @CNPJ
-public @interface CpfCnpj {
+public @interface Documento {
 	String message() default "Documento cpf ou cnpj invalido";
 	
 	Class<?>[] groups() default{};

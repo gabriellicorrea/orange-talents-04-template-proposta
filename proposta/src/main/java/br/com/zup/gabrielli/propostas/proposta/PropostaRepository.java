@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PropostaRepository extends CrudRepository<Proposta, Long>{
 
-	Optional<Proposta> findByCpfCnpj(String cpfCnpj);
-
+	Optional<Proposta> findByDocumento(String documento);
 }

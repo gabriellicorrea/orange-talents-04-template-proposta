@@ -3,6 +3,8 @@ package br.com.zup.gabrielli.propostas.proposta;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +13,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
-import br.com.zup.gabrielli.propostas.validacao.CpfCnpj;
+import br.com.zup.gabrielli.propostas.validacao.Documento;
 
 @Entity
 public class Proposta {
@@ -20,8 +22,8 @@ public class Proposta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull @NotEmpty @CpfCnpj
-	private String cpfCnpj;
+	@NotNull @NotEmpty @Documento
+	private String documento;
 	@NotNull @NotEmpty @Email
 	private String email;
 	@NotNull @NotEmpty
@@ -31,6 +33,9 @@ public class Proposta {
 	@NotNull @Positive
 	private BigDecimal  salario;
 	
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	
 	//para uso do hibernate
 	@Deprecated
 	public Proposta() {
@@ -38,10 +43,10 @@ public class Proposta {
 
 	
 	
-	public Proposta(@NotNull @NotEmpty  String cpfCnpj, @NotNull @NotEmpty @Email String email,
+	public Proposta(@NotNull @NotEmpty  String documento, @NotNull @NotEmpty @Email String email,
 			@NotNull @NotEmpty String nome, @NotNull @NotEmpty String endereco, @NotNull @Positive BigDecimal salario) {
 		
-		this.cpfCnpj = cpfCnpj;
+		this.documento = documento;
 		this.email = email;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -55,9 +60,30 @@ public class Proposta {
 	}
 
 
-	public String getCpfCnpj() {
-		return cpfCnpj;
+
+	public String getDocumento() {
+		return documento;
 	}
+
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+
+
+
+
+
+
+
 	
 
 	
