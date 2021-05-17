@@ -89,6 +89,52 @@ public class Proposta implements Serializable {
 		this.cartao = cartao;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public BigDecimal getSalario() {
+		return salario;
+	}
+
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public Cartao getCartao() {
+		return cartao;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	
+
 }
 
 /*

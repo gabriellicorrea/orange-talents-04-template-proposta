@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +56,15 @@ public class PropostaController {
 		URI uri = uriBuilder.path("/propostas/{id}").buildAndExpand(proposta.getId()).toUri();
 		//return "tudo funcionando";
 		return ResponseEntity.created(uri).build();	
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<NovaPropostaRequest> detalhar(@PathVariable Long id) {
+		Optional<Proposta> possivelProposta = propostaRepository.findById(id);
+		if (possivelProposta.isPresent()) {
+			return ResponseEntity.ok(new NovaPropostaRequest(possivelProposta.get()));
+		}
+		return ResponseEntity.notFound().build();
 	}
 	
 }
