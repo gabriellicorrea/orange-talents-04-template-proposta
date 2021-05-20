@@ -2,13 +2,14 @@ package br.com.zup.gabrielli.propostas.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "proposta", url = "http://localhost:9999")
+@FeignClient(value = "solicitacao", url = "${financeiro.dominio}")
 @Component
 public interface AnaliseClient {
 
-	@PostMapping("api/solicitacao")
-	AnaliseResponse analisa(AnaliseRequest analiseRequest);
+	@RequestMapping(method = RequestMethod.POST)
+	public AnaliseResponse analisa(AnaliseRequest analiseRequest);
 
 }

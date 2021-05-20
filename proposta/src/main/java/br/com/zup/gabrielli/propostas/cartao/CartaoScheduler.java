@@ -24,7 +24,7 @@ public class CartaoScheduler {
     
     static final Logger logger = LogManager.getLogger(CartaoScheduler.class.getName());
 
-    @Scheduled(fixedRate = 10000) 
+    @Scheduled(fixedRate = 300000) 
     private void associarCartaoComProposta(){
     	
     	List<Proposta> propostasParaAnalise = propostaRepository.propostasAprovadasSemCartao();
