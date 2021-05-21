@@ -19,6 +19,7 @@ public class Cartao implements Serializable {
 
 	private String numero;
 
+	private boolean ativo = true;
 	
 	public Cartao() {
 	}
@@ -34,4 +35,15 @@ public class Cartao implements Serializable {
 	public String getNumero() {
 		return numero;
 	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public boolean getAtivo() {
+
+		return ativo;
+	}
+	
+	
 }
