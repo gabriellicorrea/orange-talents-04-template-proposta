@@ -2,14 +2,22 @@ package br.com.zup.gabrielli.propostas.cartao;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "cartao", url = "http://localhost:8888")
+import br.com.zup.gabrielli.propostas.feign.BloqueioRequest;
+import br.com.zup.gabrielli.propostas.feign.BloqueioResponse;
+
+@FeignClient(value = "cartao", url = "${cartao.dominio}")
 @Component
 public interface CartaoClient {
 	
-	@GetMapping(value = "/api/cartoes")
+	@RequestMapping(method = RequestMethod.GET)
 	CartaoResponse analisaNumeroCartao(@RequestParam("idProposta") Long  idProposta);
 
+	@RequestMapping(method = RequestMethod.POST, value = "{id}/bloqueios", produces  = "application/json")
+    public BloqueioResponse bloquearCartao(@PathVariable("id") String numeroCartao, @RequestBody BloqueioRequest bloqueioRequest);
 }
