@@ -21,6 +21,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/biometria/**").hasAuthority("SCOPE_propostas")
                 .antMatchers(HttpMethod.POST, "/bloquearCartao/**").hasAuthority("SCOPE_propostas") 
                 .antMatchers(HttpMethod.POST, "/viagem/**").hasAuthority("SCOPE_propostas")
+                .antMatchers(HttpMethod.POST, "/carteiras/**").hasAuthority("SCOPE_propostas")
+                .antMatchers(HttpMethod.POST, "/associarPaypal/**").hasAuthority("SCOPE_propostas")
                 .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                 .anyRequest().authenticated()
         )
