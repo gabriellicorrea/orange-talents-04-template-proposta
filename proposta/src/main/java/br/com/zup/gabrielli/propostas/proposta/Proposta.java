@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import br.com.zup.gabrielli.propostas.cartao.Cartao;
+import br.com.zup.gabrielli.propostas.seguranca.DadosConverter;
 import br.com.zup.gabrielli.propostas.validacao.Documento;
 
 @Entity
@@ -33,6 +35,7 @@ public class Proposta implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Documento
+	@Convert(converter = DadosConverter.class)
 	private String documento;
 	@NotNull
 	@NotEmpty
