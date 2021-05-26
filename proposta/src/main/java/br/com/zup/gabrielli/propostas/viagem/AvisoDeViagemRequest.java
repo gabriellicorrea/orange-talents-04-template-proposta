@@ -1,8 +1,9 @@
 package br.com.zup.gabrielli.propostas.viagem;
 
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
@@ -17,11 +18,11 @@ import br.com.zup.gabrielli.propostas.cartao.Cartao;
 public class AvisoDeViagemRequest {
 
 	@NotBlank
-	private String destino;
+	public String destino;
 
 	@Future
 	@JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
-	private LocalDate validoAte;
+	public Date validoAte;
 
 	@NotNull
 	@DateTimeFormat
@@ -30,7 +31,9 @@ public class AvisoDeViagemRequest {
 	public String ipCliente;
 	public String agenteUsuario;
 
-	public AvisoDeViagemRequest(@NotBlank String destino, @Future LocalDate validoAte) {
+	public Object avisoDeViagemRequest;
+
+	public AvisoDeViagemRequest( String destino, Date validoAte) {
 		this.destino = destino;
 		this.validoAte = validoAte;
 
@@ -53,7 +56,7 @@ public class AvisoDeViagemRequest {
 	}
 
 	public AvisoDeViagem toModel(Cartao cartao) {
-		return new AvisoDeViagem(this.destino, this.validoAte, agenteUsuario, ipCliente, cartao);
+		return new AvisoDeViagem(this.validoAte, agenteUsuario, ipCliente, cartao);
 	}
 
 }

@@ -20,4 +20,8 @@ public interface CartaoClient {
 
 	@RequestMapping(method = RequestMethod.POST, value = "{id}/bloqueios", produces  = "application/json")
     public BloqueioResponse bloquearCartao(@PathVariable("id") String numeroCartao, @RequestBody BloqueioRequest bloqueioRequest);
+	
+	@RequestMapping(method = RequestMethod.POST, value = "{id}/avisos", produces = "aplication/json")
+	public AvisoResponse avisarViagem(@PathVariable("id") String numeroCartao, @RequestBody AvisoRequest AvisoRequest);
+
 }

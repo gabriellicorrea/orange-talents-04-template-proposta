@@ -1,15 +1,14 @@
 package br.com.zup.gabrielli.propostas.viagem;
 
 import java.time.LocalDate;
-
 import java.time.OffsetDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -24,11 +23,8 @@ public class AvisoDeViagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
-	
-	private String destino;
-
 	@NotNull
-	private LocalDate validoAte;
+	private Date validoAte;
 
 	@CreationTimestamp
 	private OffsetDateTime criadoEm;
@@ -46,12 +42,10 @@ public class AvisoDeViagem {
 	public AvisoDeViagem() {
 	}
 
-	public AvisoDeViagem(@NotNull String destino, 
-			LocalDate validoAte, 
+	public AvisoDeViagem(Date validoAte, 
 			@NotEmpty String ipCliente,
 			@NotEmpty String agenteUsuario,
 			Cartao cartao) {
-		this.destino = destino;
 		this.validoAte = validoAte;
 		this.ipCliente = ipCliente;
 		this.agenteUsuario = agenteUsuario;
@@ -62,11 +56,7 @@ public class AvisoDeViagem {
 		return Id;
 	}
 
-	public String getDestino() {
-		return destino;
-	}
-
-	public LocalDate getvalidoAte() {
+	public Date getvalidoAte() {
 		return validoAte;
 	}
 
